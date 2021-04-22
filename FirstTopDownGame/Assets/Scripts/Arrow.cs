@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+	[HideInInspector] public float ArrowDamage = 0f;
 	float arrowVelocity = 5f;
 	Rigidbody2D rb;
 
@@ -22,6 +24,11 @@ public class Arrow : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
+		if (collision.gameObject.tag == "Enemy")
+		{
+			collision.gameObject.GetComponent<EnemyController>().UpdateHealth(-ArrowDamage);
+		}
+
 		Destroy(gameObject);
 	}
 }

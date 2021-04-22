@@ -4,18 +4,20 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] HealthBar healthBar;
 
+    public float CurrentHealth => currentHealth;
+
     float maxHealth = 100f;
     float currentHealth;
     Animator animator;
 
     void Start()
     {
-        currentHealth = maxHealth;
         animator = GetComponent<Animator>();
-        healthBar.SetMaxHealth((int)maxHealth);
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
-    public void UpdateHealth(float quantity)
+	public void UpdateHealth(float quantity)
     {
         currentHealth += quantity;
         if (currentHealth <= 0)
@@ -23,7 +25,7 @@ public class EnemyController : MonoBehaviour
             currentHealth = 0;
             Die();
         }
-        healthBar.SetHealth((int)currentHealth);
+        healthBar.SetHealth(currentHealth);
     }
 
 	void Die()

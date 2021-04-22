@@ -4,51 +4,58 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] GameObject PlayerDetectionPoint;
-    [SerializeField] float DetectionRadius = 3f;
-
+    float minDistance = .5f;
+    float speed = 2f;
     GameObject target;
+    EnemyController enemyController;
 
-    void Update()
+    Animator animator;
+    bool isMoving;
+    Vector2 movingTo;
+
+    void Start()
+	{
+        animator = GetComponent<Animator>();
+        enemyController = GetComponent<EnemyController>();
+    }
+
+	void FixedUpdate()
     {
-        
+        isMoving = false;
+
+        if (target != null && enemyController.CurrentHealth > 0)
+        {
+            var lastPos = transform.position;
+            if (Vector2.Distance(transform.position, target.transform.position) > minDistance)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+                isMoving = true;
+            }
+            movingTo = (transform.position - lastPos).normalized; // calculate the direction we moving
+        }
+        Animations();
+    }
+
+    void Animations()
+    {
+        animator.SetFloat("Horizontal", movingTo.x);
+        animator.SetFloat("Vertical", movingTo.y);
+        animator.SetFloat("Speed", (isMoving ? 1 : 0));
     }
 
 	void OnTriggerEnter2D(Collider2D collision)
 	{
         if (collision.gameObject.tag == "Player")
         {
-            //Start Chasing
             target = collision.gameObject;
-            Debug.Log($"Start Chasing: {collision.gameObject.name}");
         }
 	}
-
-	void OnTriggerStay2D(Collider2D collision)
-	{
-        if (collision.gameObject.tag == "Player")
-        {
-            //Start Chasing
-            Debug.Log($"stay Chasing: {collision.gameObject.name}");
-        }
-    }
 
 	void OnTriggerExit2D(Collider2D collision)
 	{
         if (collision.gameObject.tag == "Player")
         {
-            //Stop Chasing
             target = null;
-            Debug.Log($"Stop Chasing: {collision.gameObject.name}");
         }
-    }
-
-	void OnDrawGizmosSelected()
-    {
-        //if (PlayerDetectionPoint != null)
-        //{
-        //    // Just draw a circle in the editor, for help us to ajust it
-        //    Gizmos.DrawWireSphere(PlayerDetectionPoint.transform.position, DetectionRadius);
-        //}
     }
 }

@@ -4,7 +4,8 @@ public class PlayerCombat : MonoBehaviour
 {
     public Transform AttackPoint;
     public LayerMask enemyLayers;
-    
+
+    PlayerController playerController;
     float attackDelay = 1f;
     Animator animator;
     float attackPointMoveDistance = 0.20f;
@@ -13,6 +14,7 @@ public class PlayerCombat : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        playerController = GetComponent<PlayerController>();
     }
 
     void Update()
@@ -37,7 +39,7 @@ public class PlayerCombat : MonoBehaviour
 
 			foreach (var item in hitEnemies)
 			{
-                item.GetComponent<EnemyController>().UpdateHealth(-50);
+                item.GetComponent<EnemyController>()?.UpdateHealth(-playerController.AttackPower);
 			}
         }
     }

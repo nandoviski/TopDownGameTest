@@ -7,6 +7,10 @@ public class PlayerController : MonoBehaviour
     Vector2 movement;
     float moveSpeed = 6f;
 
+    public float AttackPower => 10f;
+    public float MaxHealth => 100f;
+    public float CurrentHealth => 100f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

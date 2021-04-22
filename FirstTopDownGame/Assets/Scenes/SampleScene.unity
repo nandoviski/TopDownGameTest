@@ -208,11 +208,11 @@ GameObject:
   m_Component:
   - component: {fileID: 374050658}
   - component: {fileID: 374050657}
-  - component: {fileID: 374050660}
-  - component: {fileID: 374050663}
   - component: {fileID: 374050659}
   - component: {fileID: 374050661}
   - component: {fileID: 374050662}
+  - component: {fileID: 374050660}
+  - component: {fileID: 374050663}
   - component: {fileID: 374050664}
   m_Layer: 7
   m_Name: Player
@@ -25793,11 +25793,11 @@ GameObject:
   m_Component:
   - component: {fileID: 604814010}
   - component: {fileID: 604814009}
-  - component: {fileID: 604814011}
-  - component: {fileID: 604814012}
-  - component: {fileID: 604814013}
   - component: {fileID: 604814014}
+  - component: {fileID: 604814013}
+  - component: {fileID: 604814012}
   - component: {fileID: 604814015}
+  - component: {fileID: 604814011}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -25865,7 +25865,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604814008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.78, y: 4.09, z: 0}
+  m_LocalPosition: {x: 0.01, y: 4.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1604147622}
@@ -25886,8 +25886,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.030287266}
-  m_Size: {x: 0.74282646, y: 1.1668434}
+  m_Offset: {x: 0.004251361, y: -0.059518874}
+  m_Size: {x: 0.6922431, y: 1.0748647}
   m_Direction: 0
 --- !u!114 &604814012
 MonoBehaviour:
@@ -25922,7 +25922,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &604814014
 Animator:
   serializedVersion: 3
@@ -25954,8 +25954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49717f3d634d3224990eb39be0b2788f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerDetectionPoint: {fileID: 1277725337}
-  DetectionRadius: 3
 --- !u!1 &606216622
 GameObject:
   m_ObjectHideFlags: 0
@@ -28212,7 +28210,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 3.5
 --- !u!1 &1474238078
 GameObject:
   m_ObjectHideFlags: 0
@@ -28256,7 +28254,7 @@ GameObject:
   - component: {fileID: 1604147620}
   - component: {fileID: 1604147619}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: HeathBarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
