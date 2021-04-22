@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    Slider slider;
+    [SerializeField] Sprite emptyHeart;
+    [SerializeField] Image heartImage;
 
-    void Start()
-    {
-        slider = GetComponent<Slider>();    
+    Slider slider;
+    
+
+    void Awake()
+	{
+        slider = GetComponent<Slider>();
     }
 
     public void SetMaxHealth(int health)
@@ -21,5 +23,10 @@ public class HealthBar : MonoBehaviour
     public void SetHealth(int health)
     {
         slider.value = health;
+
+        if (slider.value <= 0)
+        {
+            heartImage.sprite = emptyHeart;
+        }
     }
 }

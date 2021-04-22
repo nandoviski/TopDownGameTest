@@ -26,7 +26,7 @@ public class PlayerCombat : MonoBehaviour
 
         MoveAttackerCircle();
 
-        if (Input.GetKeyDown(KeyCode.Space) && attackDelay == 0f)
+        if (Input.GetKeyDown(KeyCode.Space) && attackDelay == 0f) // Melee attack
         {
             // Play animation
             animator.SetTrigger("Attack");

@@ -2,21 +2,17 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public HealthBar healthBar;
+    [SerializeField] HealthBar healthBar;
 
-    float maxHealth = 100;
+    float maxHealth = 100f;
     float currentHealth;
-    Animator animator;//
+    Animator animator;
 
     void Start()
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         healthBar.SetMaxHealth((int)maxHealth);
-    }
-
-    void Update()
-    {
     }
 
     public void UpdateHealth(float quantity)
